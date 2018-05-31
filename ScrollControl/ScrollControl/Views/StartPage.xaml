@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ScrollControl.Views.StartPage">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="CenterAndExpand" 
+                     HorizontalOptions="CenterAndExpand" >
+            <Button Text="Horizontal Example" Command="{Binding OpenHorizontalCmd}" />
+            <Button Text="Vertical Example" Command="{Binding OpenVerticalCmd}"/>
+            <Button Text="Flex Example" Command="{Binding OpenFlexCmd}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

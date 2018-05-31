@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:ScrollControl.Controls"
+             xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:ffimagetransformation="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             x:Class="ScrollControl.Views.FlexPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="210" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <ffimage:CachedImage Grid.RowSpan="3" Source="{Binding BackgroundUrl}" Aspect="Fill" DownsampleToViewSize="True" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <ffimage:CachedImage.Transformations>
+                        <ffimagetransformation:BlurredTransformation Radius="40" />
+                    </ffimage:CachedImage.Transformations>
+                </ffimage:CachedImage>
+
+                <ffimage:CachedImage Grid.Row="0" Source="{Binding BackgroundUrl}" Aspect="AspectFit" Margin="10" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                </ffimage:CachedImage>
+
+                <Label Grid.Row="1" Text="{Binding TestText}" FontSize="32" BackgroundColor="White" HorizontalTextAlignment="Center" TextColor="Black" VerticalOptions="EndAndExpand" Opacity=".8"></Label>
+                <StackLayout Grid.Row="2">
+                    <controls:ScrollViewControl SelectedCommand="{Binding ItemClickedCmd}" ItemsSource="{Binding Words}" Orientation="Vertical" ShouldFlex="True">
+                        <controls:ScrollViewControl.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout WidthRequest="100" HeightRequest="100" Margin="15">
+                                        <Label TextColor="White" Text="{Binding Word}"/>
+                                        <ffimage:CachedImage Source="{Binding ImgUrl}">
+                                        </ffimage:CachedImage>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </controls:ScrollViewControl.ItemTemplate>
+                    </controls:ScrollViewControl>
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

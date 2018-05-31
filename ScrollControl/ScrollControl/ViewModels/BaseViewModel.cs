@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace ScrollControl.ViewModels
 {
-    public class BaseViewModel : INotifyPropertyChanged
+    public abstract class BaseViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName]string propertyName = "") =>

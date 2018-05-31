@@ -4,8 +4,7 @@
              xmlns:controls="clr-namespace:ScrollControl.Controls"
              xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:ffimagetransformation="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
-             xmlns:local="clr-namespace:ScrollControl"
-             x:Class="ScrollControl.MainPage">
+             x:Class="ScrollControl.Views.VerticalPage">
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -18,14 +17,17 @@
                     <ffimagetransformation:BlurredTransformation Radius="40" />
                 </ffimage:CachedImage.Transformations>
             </ffimage:CachedImage>
-            <ContentView Grid.RowSpan="3" BackgroundColor="Black" Opacity="0.3" />
+            
+            <ffimage:CachedImage Grid.Row="0" Source="{Binding BackgroundUrl}" Aspect="AspectFit" Margin="10" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+            </ffimage:CachedImage>
 
-            <StackLayout Grid.Row="0">
-                <controls:ScrollViewControl SelectedCommand="{Binding ItemClickedCmd}" HeightRequest="200" ItemsSource="{Binding Words}" Orientation="Horizontal">
+            <Label Grid.Row="1" Text="{Binding TestText}" FontSize="32" BackgroundColor="White" HorizontalTextAlignment="Center" TextColor="Black" VerticalOptions="EndAndExpand" Opacity=".8"></Label>
+            <StackLayout Grid.Row="2">
+                <controls:ScrollViewControl SelectedCommand="{Binding ItemClickedCmd}" ItemsSource="{Binding Words}" Orientation="Vertical">
                     <controls:ScrollViewControl.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout WidthRequest="150" HeightRequest="150" Margin="30">
+                                <StackLayout Margin="30">
                                     <Label TextColor="White" Text="{Binding Word}"/>
                                     <ffimage:CachedImage Source="{Binding ImgUrl}">
                                     </ffimage:CachedImage>
@@ -35,11 +37,6 @@
                     </controls:ScrollViewControl.ItemTemplate>
                 </controls:ScrollViewControl>
             </StackLayout>
-
-            <Label Grid.Row="1" Text="{Binding TestText}" FontSize="32" BackgroundColor="White" HorizontalTextAlignment="Center" TextColor="Black" VerticalOptions="EndAndExpand" Opacity=".8"></Label>
-
-            <ffimage:CachedImage Grid.Row="2" Source="{Binding BackgroundUrl}" Aspect="AspectFit" Margin="10" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-            </ffimage:CachedImage>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

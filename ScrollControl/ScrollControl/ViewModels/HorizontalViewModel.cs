@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace ScrollControl.ViewModels
 {
-    public class MainViewModel : BaseViewModel
+    public class ListViewModel : BaseViewModel
     {
         private string _testText;
         private List<MyItem> _words = new List<MyItem>();
@@ -19,7 +19,7 @@ namespace ScrollControl.ViewModels
 
         public string BackgroundUrl { get { return _backGroundUrl; } set { _backGroundUrl = value; OnPropertyChanged("BackgroundUrl"); } }
 
-        public MainViewModel()
+        public ListViewModel()
         {
             ItemClickedCmd = new Command(ItemClicked);
             BackgroundUrl = "https://images.unsplash.com/photo-1453078977505-10c3e375c2a0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c30ca6ca6ab9d7500b96198e108ab0ea&auto=format&fit=crop&w=1350&q=80";

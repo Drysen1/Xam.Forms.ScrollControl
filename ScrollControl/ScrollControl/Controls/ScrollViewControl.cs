@@ -45,36 +45,72 @@ namespace ScrollControl.Controls
             set { SetValue(SelectedCommandParameterProperty, value); }
         }
 
+        public static readonly BindableProperty ShouldFlexProperty =
+        BindableProperty.Create("ShouldFlex", typeof(bool), typeof(ScrollViewControl), false);
+
+        public bool ShouldFlex
+        {
+            get { return (bool)GetValue(ShouldFlexProperty); }
+            set { SetValue(ShouldFlexProperty, value); }
+        }
+
         public void Render()
         {
             if (ItemTemplate == null || ItemsSource == null)
                 return;
 
-            var layout = new StackLayout();
-            layout.Orientation = Orientation == ScrollOrientation.Vertical ? StackOrientation.Vertical : StackOrientation.Horizontal;
 
-            foreach (var item in ItemsSource)
+            if(ShouldFlex)
             {
-                var command = SelectedCommand ?? new Command((obj) =>
-                {
-                    var args = new ItemTappedEventArgs(ItemsSource, item);
-                    ItemSelected?.Invoke(this, args);
-                });
-                var commandParameter = SelectedCommandParameter ?? item;
+                var layout = new FlexLayout();
 
-                var viewCell = ItemTemplate.CreateContent() as ViewCell;
-                viewCell.View.BindingContext = item;
-                viewCell.View.GestureRecognizers.Add(new TapGestureRecognizer
-                {
-                    Command = command,
-                    CommandParameter = commandParameter,
-                    NumberOfTapsRequired = 1
-                });
+                layout.Direction = FlexDirection.Row;
+                layout.Wrap = FlexWrap.Wrap;
+                layout.AlignContent = FlexAlignContent.Start;
+                layout.JustifyContent = FlexJustify.SpaceBetween;
 
-                layout.Children.Add(viewCell.View);
+                foreach (var item in ItemsSource)
+                {
+                    var viewCell = CreateViewCell(item);
+                    layout.Children.Add(viewCell.View);
+                }
+
+                Content = layout;
             }
+            else
+            {
+                var layout = new StackLayout();
+                layout.Orientation = Orientation == ScrollOrientation.Vertical ? StackOrientation.Vertical : StackOrientation.Horizontal;
 
-            Content = layout;
+                foreach (var item in ItemsSource)
+                {
+                    var viewCell = CreateViewCell(item);
+                    layout.Children.Add(viewCell.View);
+                }
+
+                Content = layout;
+            }
+        }
+
+        private ViewCell CreateViewCell(object item)
+        {
+            var command = SelectedCommand ?? new Command((obj) =>
+            {
+                var args = new ItemTappedEventArgs(ItemsSource, item);
+                ItemSelected?.Invoke(this, args);
+            });
+            var commandParameter = SelectedCommandParameter ?? item;
+
+            var viewCell = ItemTemplate.CreateContent() as ViewCell;
+            viewCell.View.BindingContext = item;
+            viewCell.View.GestureRecognizers.Add(new TapGestureRecognizer
+            {
+                Command = command,
+                CommandParameter = commandParameter,
+                NumberOfTapsRequired = 1
+            });
+
+            return viewCell;
         }
     }
 }

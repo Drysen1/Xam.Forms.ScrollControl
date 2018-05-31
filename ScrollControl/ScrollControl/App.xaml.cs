@@ -1,3 +1,4 @@
+using ScrollControl.Views;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -11,7 +12,7 @@ namespace ScrollControl
 		{
 			InitializeComponent();
 
-			MainPage = new MainPage();
+			MainPage = new NavigationPage(new StartPage());
 		}
 
 		protected override void OnStart ()

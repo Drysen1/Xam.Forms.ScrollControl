@@ -8,12 +8,12 @@ using Xamarin.Forms;
 
 namespace ScrollControl
 {
-	public partial class MainPage : ContentPage
+	public partial class HorizontalPage : ContentPage
 	{
-		public MainPage()
+		public HorizontalPage()
 		{
 			InitializeComponent();
-            BindingContext = new MainViewModel();
+            BindingContext = new ListViewModel();
 		}
 	}
 }
