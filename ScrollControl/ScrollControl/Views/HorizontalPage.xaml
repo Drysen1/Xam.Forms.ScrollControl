@@ -21,7 +21,7 @@
             <ContentView Grid.RowSpan="3" BackgroundColor="Black" Opacity="0.3" />
 
             <StackLayout Grid.Row="0">
-                <controls:ScrollViewControl SelectedCommand="{Binding ItemClickedCmd}" HeightRequest="200" ItemsSource="{Binding Words}" Orientation="Horizontal" SelectedItemBackColor="Blue">
+                <controls:ScrollViewControl SelectedCommand="{Binding ItemClickedCmd}" HeightRequest="200" ItemsSource="{Binding Words}" Orientation="Horizontal" SelectedItemBackColor="#800000FF">
                     <controls:ScrollViewControl.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>

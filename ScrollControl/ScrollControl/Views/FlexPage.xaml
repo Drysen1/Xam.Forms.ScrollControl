@@ -24,7 +24,7 @@
 
                 <Label Grid.Row="1" Text="{Binding TestText}" FontSize="32" BackgroundColor="White" HorizontalTextAlignment="Center" TextColor="Black" VerticalOptions="EndAndExpand" Opacity=".8"></Label>
                 <StackLayout Grid.Row="2">
-                    <controls:ScrollViewControl SelectedCommand="{Binding ItemClickedCmd}" ItemsSource="{Binding Words}" Orientation="Vertical" ShouldFlex="True" SelectedItemBackColor="Green">
+                    <controls:ScrollViewControl SelectedCommand="{Binding ItemClickedCmd}" ItemsSource="{Binding Words}" Orientation="Vertical" ShouldFlex="True" SelectedItemBackColor="#80008000">
                         <controls:ScrollViewControl.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
