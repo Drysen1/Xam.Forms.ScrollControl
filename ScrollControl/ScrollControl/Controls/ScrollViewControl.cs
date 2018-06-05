@@ -135,14 +135,7 @@ namespace ScrollControl.Controls
 
                 foreach(var item in layout.Children)
                 {
-                    if(item == obj)
-                    {
-                        item.BackgroundColor = SelectedItemBackColor;
-                    }
-                    else
-                    {
-                        item.BackgroundColor = Color.Transparent;
-                    }
+                    item.BackgroundColor = item == obj ? SelectedItemBackColor : Color.Transparent;
                 }
             }
             else
@@ -151,14 +144,7 @@ namespace ScrollControl.Controls
 
                 foreach (var item in layout.Children)
                 {
-                    if (item == obj)
-                    {
-                        item.BackgroundColor = SelectedItemBackColor;
-                    }
-                    else
-                    {
-                        item.BackgroundColor = Color.Transparent;
-                    }
+                    item.BackgroundColor = item == obj ? SelectedItemBackColor : Color.Transparent;
                 }
             }
         }
