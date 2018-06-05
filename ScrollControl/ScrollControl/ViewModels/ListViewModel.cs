@@ -34,7 +34,7 @@ namespace ScrollControl.ViewModels
                 new MyItem(){ Word = "Car", ImgUrl = "https://images.unsplash.com/photo-1503428193604-2447f4935fe1?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2b280aad2390e4bbabcd2ccce036b2ae&auto=format&fit=crop&w=1489&q=80"},
                 new MyItem(){ Word = "Boat", ImgUrl = "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=cea32ac97f8ffde3f76df4a646ac8b4d&auto=format&fit=crop&w=1350&q=80"},
                 new MyItem(){ Word = "Water", ImgUrl = "https://images.unsplash.com/photo-1488188630656-ba26eafba904?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f25ca4552ae081300ab292e21d8cc81c&auto=format&fit=crop&w=1353&q=80"},
-                new MyItem(){ Word = "Chocolate", ImgUrl = "https://images.unsplash.com/photo-1511381878266-349693efb20d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4f6896536cbbe3da759c539fd74a66cc&auto=format&fit=crop&w=1301&q=80"}
+                new MyItem(){ Word = "Chocolate", ImgUrl = "https://images.unsplash.com/photo-1511381939415-e44015466834?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=232a6121d81f4dea55a84ea373af4559&auto=format&fit=crop&w=1438&q=80"}
             };
         }
 

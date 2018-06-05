@@ -24,11 +24,11 @@
 
                 <Label Grid.Row="1" Text="{Binding TestText}" FontSize="32" BackgroundColor="White" HorizontalTextAlignment="Center" TextColor="Black" VerticalOptions="EndAndExpand" Opacity=".8"></Label>
                 <StackLayout Grid.Row="2">
-                    <controls:ScrollViewControl SelectedCommand="{Binding ItemClickedCmd}" ItemsSource="{Binding Words}" Orientation="Vertical" ShouldFlex="True">
+                    <controls:ScrollViewControl SelectedCommand="{Binding ItemClickedCmd}" ItemsSource="{Binding Words}" Orientation="Vertical" ShouldFlex="True" SelectedItemBackColor="Green">
                         <controls:ScrollViewControl.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    <StackLayout WidthRequest="100" HeightRequest="100" Margin="15">
+                                    <StackLayout WidthRequest="110" HeightRequest="110" Margin="5" Padding="10">
                                         <Label TextColor="White" Text="{Binding Word}"/>
                                         <ffimage:CachedImage Source="{Binding ImgUrl}">
                                         </ffimage:CachedImage>

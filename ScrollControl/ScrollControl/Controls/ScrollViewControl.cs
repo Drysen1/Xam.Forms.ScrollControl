@@ -54,13 +54,22 @@ namespace ScrollControl.Controls
             set { SetValue(ShouldFlexProperty, value); }
         }
 
+        public static readonly BindableProperty SelectedItemBackColorProperty =
+        BindableProperty.Create("SelectedItemBackColor", typeof(Color), typeof(ScrollViewControl), Color.Transparent);
+
+        public Color SelectedItemBackColor
+        {
+            get { return (Color)GetValue(SelectedItemBackColorProperty); }
+            set { SetValue(SelectedItemBackColorProperty, value); }
+        }
+
         public void Render()
         {
             if (ItemTemplate == null || ItemsSource == null)
                 return;
 
 
-            if(ShouldFlex)
+            if (ShouldFlex)
             {
                 var layout = new FlexLayout();
 
@@ -102,15 +111,56 @@ namespace ScrollControl.Controls
             var commandParameter = SelectedCommandParameter ?? item;
 
             var viewCell = ItemTemplate.CreateContent() as ViewCell;
+
+            var tap = new TapGestureRecognizer();
+            tap.Command = command;
+            tap.CommandParameter = commandParameter;
+            tap.NumberOfTapsRequired = 1;
+
             viewCell.View.BindingContext = item;
-            viewCell.View.GestureRecognizers.Add(new TapGestureRecognizer
-            {
-                Command = command,
-                CommandParameter = commandParameter,
-                NumberOfTapsRequired = 1
-            });
+            viewCell.View.GestureRecognizers.Add(tap);
+
+            tap.Tapped += Tap_Tapped;
 
             return viewCell;
+        }
+
+        private void Tap_Tapped(object sender, EventArgs e)
+        {
+            var obj = sender as View;
+
+            if(ShouldFlex)
+            {
+                var layout = this.Content as FlexLayout;
+
+                foreach(var item in layout.Children)
+                {
+                    if(item == obj)
+                    {
+                        item.BackgroundColor = SelectedItemBackColor;
+                    }
+                    else
+                    {
+                        item.BackgroundColor = Color.Transparent;
+                    }
+                }
+            }
+            else
+            {
+                var layout = this.Content as StackLayout;
+
+                foreach (var item in layout.Children)
+                {
+                    if (item == obj)
+                    {
+                        item.BackgroundColor = SelectedItemBackColor;
+                    }
+                    else
+                    {
+                        item.BackgroundColor = Color.Transparent;
+                    }
+                }
+            }
         }
     }
 }
