@@ -2,4 +2,4 @@
 
 Thanks to the awesome : https://github.com/sthewissen/KickassUI.Spotify by sthewissen I found exactly what I needed. A smooth implication of listview, well, in this case a scrollview, to act as a horizontal list.
 
-I also added for it to work on UWP as per the requirements I was working with in a project.
+In my sample I've extended the original control to also work on UWP. And togheter with Xamarin.Forms 3.0 > it now also works with the new Flexlayout to create a "flowlistview".
