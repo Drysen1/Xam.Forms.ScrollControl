@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:ScrollControl.Controls"
+             xmlns:customcells="clr-namespace:ScrollControl.CustomCells"
+             x:Class="ScrollControl.Views.TemplateSelectorPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <customcells:RedGreenCellTemplateSelector x:Key="redgreenselector" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <controls:ScrollViewControl ItemsSource="{Binding GreenRedList}" 
+                                        Orientation="Vertical" 
+                                        ShouldFlex="True" 
+                                        ItemTemplateSelector="{StaticResource redgreenselector}">
+
+            </controls:ScrollViewControl>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

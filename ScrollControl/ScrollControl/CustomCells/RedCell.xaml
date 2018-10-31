@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" 
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+          x:Class="ScrollControl.CustomCells.RedCell">
+  <ViewCell.View>
+        <StackLayout WidthRequest="110" HeightRequest="110" Margin="5" Padding="10" BackgroundColor="Red">
+            <ffimage:CachedImage Source="{Binding ImgUrl}">
+            </ffimage:CachedImage>
+        </StackLayout>
+  </ViewCell.View>
+</ViewCell>

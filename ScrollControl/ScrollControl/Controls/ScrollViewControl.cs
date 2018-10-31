@@ -7,6 +7,15 @@ namespace ScrollControl.Controls
 {
     public class ScrollViewControl : ScrollView
     {
+        public static readonly BindableProperty ItemTemplateSelectorProperty =
+            BindableProperty.Create("ItemTemplateSelector", typeof(DataTemplateSelector), typeof(ScrollViewControl), default(DataTemplateSelector));
+
+        public DataTemplateSelector ItemTemplateSelector
+        {
+            get { return (DataTemplateSelector)GetValue(ItemTemplateSelectorProperty); }
+            set { SetValue(ItemTemplateSelectorProperty, value); }
+        }
+
         public static readonly BindableProperty ItemsSourceProperty =
            BindableProperty.Create("ItemsSource", typeof(IEnumerable), typeof(ScrollViewControl), default(IEnumerable));
 
@@ -63,11 +72,26 @@ namespace ScrollControl.Controls
             set { SetValue(SelectedItemBackColorProperty, value); }
         }
 
+        private bool IsSourceAndTemplateNull()
+        {
+            bool isNull = true;
+
+            if(ItemsSource != null && ItemTemplate != null)
+            {
+                isNull = false;
+            }
+            else if(ItemsSource != null && ItemTemplateSelector != null)
+            {
+                isNull = false;
+            }
+
+            return isNull;
+        }
+
         public void Render()
         {
-            if (ItemTemplate == null || ItemsSource == null)
+            if (IsSourceAndTemplateNull())
                 return;
-
 
             if (ShouldFlex)
             {
@@ -110,7 +134,9 @@ namespace ScrollControl.Controls
             });
             var commandParameter = SelectedCommandParameter ?? item;
 
-            var viewCell = ItemTemplate.CreateContent() as ViewCell;
+            var itemTemplateInstance = ItemTemplateSelector != null ? ItemTemplateSelector.SelectTemplate(item, null) : ItemTemplate;
+
+            var viewCell = itemTemplateInstance.CreateContent() as ViewCell;
 
             var tap = new TapGestureRecognizer();
             tap.Command = command;

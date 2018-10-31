@@ -14,6 +14,7 @@ namespace ScrollControl.ViewModels
         public ICommand OpenHorizontalCmd { get; set; }
         public ICommand OpenVerticalCmd { get; set; }
         public ICommand OpenFlexCmd { get; set; }
+        public ICommand OpenTemplaceSelectorCmd { get; set; }
 
         public StartViewModel(INavigation navigation)
         {
@@ -21,6 +22,12 @@ namespace ScrollControl.ViewModels
             OpenHorizontalCmd = new Command(OpenHorizontalPage);
             OpenVerticalCmd = new Command(OpenVerticalPage);
             OpenFlexCmd = new Command(OpenFlexPage);
+            OpenTemplaceSelectorCmd = new Command(OpenTemplateSelectorPage);
+        }
+
+        private async void OpenTemplateSelectorPage(object obj)
+        {
+            await _navigation.PushAsync(new TemplateSelectorPage());
         }
 
         private async void OpenFlexPage(object obj)

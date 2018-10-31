@@ -8,6 +8,7 @@
             <Button Text="Horizontal Example" Command="{Binding OpenHorizontalCmd}" />
             <Button Text="Vertical Example" Command="{Binding OpenVerticalCmd}"/>
             <Button Text="Flex Example" Command="{Binding OpenFlexCmd}" />
+            <Button Text="TemplateSelector Example" Command="{Binding OpenTemplaceSelectorCmd}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
